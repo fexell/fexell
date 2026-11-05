@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import "@arraypress/waveform-player/styles.css";
 
-export default function TrackPlayer({ url, title, artist, volume: initialVolume = 0.4 }) {
+export default function TrackPlayer({ url, title, artist, artwork, bpm, volume: initialVolume = 0.4 }) {
   const containerRef = useRef(null);
   const playerRef = useRef(null);
   const [volume, setVolume] = useState(initialVolume);
@@ -20,11 +20,17 @@ export default function TrackPlayer({ url, title, artist, volume: initialVolume 
         url,
         title,
         artist,
+        artwork,
+        artworkAlt: `${title} – omslag`,
+        showBPM: true,
+        bpm: bpm ?? null, // null = räkna ut automatiskt
         colorPreset: "dark",
-        waveformStyle: "mirror",
-        waveformColor: "rgba(255, 255, 255, 0.3)",
+        waveformStyle: "bars",
+        barWidth: 2,
+        barSpacing: 3,
+        waveformColor: "rgba(255, 255, 255, 0.35)",
         progressColor: "#ffffff",
-        height: 64,
+        height: 80,
       });
       playerRef.current = player;
       player.setVolume(volume);
@@ -37,7 +43,7 @@ export default function TrackPlayer({ url, title, artist, volume: initialVolume 
     };
     // Spelaren ska bara skapas om när låten byts, inte när volymen ändras.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url, title, artist]);
+  }, [url, title, artist, artwork, bpm]);
 
   // Skicka volym/mute till spelaren när reglaget ändras.
   useEffect(() => {
@@ -47,10 +53,10 @@ export default function TrackPlayer({ url, title, artist, volume: initialVolume 
   const effective = muted ? 0 : volume;
 
   return (
-    <div className="w-full">
+    <div className="w-full rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-left sm:p-5">
       <div ref={containerRef} className="w-full" />
 
-      <div className="mt-4 flex items-center justify-center gap-3 text-white/70">
+      <div className="mt-3 flex items-center justify-end gap-3 text-white/60">
         <button
           type="button"
           onClick={() => setMuted((m) => !m)}
