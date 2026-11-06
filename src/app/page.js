@@ -1,4 +1,5 @@
 import TrackPlayer from "@/components/TrackPlayer";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
   return (
@@ -14,6 +15,9 @@ export default function Home() {
             artist="Fexell"
             artwork="/tracks/Cover-512.jpg"
           />
+        </div>
+        <div className="mt-10">
+          <SocialLinks />
         </div>
       </div>
     </div>
