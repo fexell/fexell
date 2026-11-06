@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "peaks": "node scripts/generate-peaks.mjs"
   },
   "dependencies": {
-    "@arraypress/waveform-player": "^1.30.0",
     "next": "16.4.5",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
+    "audio-decode": "^3.12.0",
     "tailwindcss": "^4"
   }
 }

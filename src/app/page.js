@@ -1,4 +1,5 @@
-import TrackPlayer from "@/components/TrackPlayer";
+import MusicPlayer from "@/components/player/MusicPlayer";
+import { tracks } from "@/data/tracks";
 import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
@@ -17,12 +18,7 @@ export default function Home() {
       </div>
       <div className="bottom flex flex-1 flex-col w-full items-center justify-start px-4 pt-8 text-white">
         <div className="w-full max-w-2xl">
-          <TrackPlayer
-            url={encodeURI("/tracks/Fexell - Heaven.mp3")}
-            title="Heaven"
-            artist="Fexell"
-            artwork="/tracks/HEAVEN - Cover.jpg"
-          />
+          <MusicPlayer tracks={tracks} />
         </div>
         <div className="mt-10">
           <SocialLinks />
