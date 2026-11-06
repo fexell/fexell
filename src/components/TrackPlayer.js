@@ -3,7 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import "@arraypress/waveform-player/styles.css";
 
-export default function TrackPlayer({ url, title, artist, artwork, bpm, volume: initialVolume = 0.4 }) {
+// Storlek på omslagsbilden i pixlar – ändra här (eller skicka artworkSize som prop).
+const ARTWORK_SIZE = 64;
+
+export default function TrackPlayer({ url, title, artist, artwork, bpm, volume: initialVolume = 0.4, artworkSize = ARTWORK_SIZE }) {
   const containerRef = useRef(null);
   const playerRef = useRef(null);
   const [volume, setVolume] = useState(initialVolume);
@@ -30,7 +33,7 @@ export default function TrackPlayer({ url, title, artist, artwork, bpm, volume: 
         barSpacing: 3,
         waveformColor: "rgba(255, 255, 255, 0.35)",
         progressColor: "#ffffff",
-        height: 80,
+        height: 56,
       });
       playerRef.current = player;
       player.setVolume(volume);
@@ -54,7 +57,10 @@ export default function TrackPlayer({ url, title, artist, artwork, bpm, volume: 
 
   return (
     <div className="w-full rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-left sm:p-5">
-      <div ref={containerRef} className="w-full" />
+      {/* Klassen ligger på en wrapper eftersom biblioteket skriver över className på containern */}
+      <div className="fexell-player w-full" style={{ "--artwork-size": `${artworkSize}px` }}>
+        <div ref={containerRef} className="w-full" />
+      </div>
 
       <div className="mt-3 flex items-center justify-end gap-3 text-white/60">
         <button

@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Omslagsbildens storlek i musikspelaren styrs av ARTWORK_SIZE i TrackPlayer.js.
+   !important behövs eftersom biblioteket sätter 40px som inline-stil. */
+.fexell-player .waveform-artwork {
+  width: var(--artwork-size, 40px) !important;
+  height: var(--artwork-size, 40px) !important;
+  border-radius: 6px !important;
+}
