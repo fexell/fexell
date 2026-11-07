@@ -167,7 +167,7 @@ export default function MusicPlayer({ tracks, artworkSize = ARTWORK_SIZE, initia
       <div className="flex items-center gap-4">
         <img
           src={encodeURI(track.artwork)}
-          alt={`${track.title} – omslag`}
+          alt={`${track.title} – cover art`}
           width={artworkSize}
           height={artworkSize}
           className="shrink-0 rounded-lg object-cover shadow-lg shadow-black/40"
@@ -183,14 +183,14 @@ export default function MusicPlayer({ tracks, artworkSize = ARTWORK_SIZE, initia
 
           <div className="mt-3 flex items-center gap-2">
             {hasPlaylist && (
-              <IconButton label="Föregående låt" onClick={previous}>
+              <IconButton label="Previous track" onClick={previous}>
                 <FaBackwardStep />
               </IconButton>
             )}
             <button
               type="button"
               onClick={togglePlay}
-              aria-label={playing ? "Pausa" : "Spela"}
+              aria-label={playing ? "Pause" : "Play"}
               className="relative flex h-11 w-11 items-center justify-center rounded-full bg-white text-black transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               {playing ? <FaPause /> : <FaPlay className="translate-x-px" />}
@@ -199,7 +199,7 @@ export default function MusicPlayer({ tracks, artworkSize = ARTWORK_SIZE, initia
               )}
             </button>
             {hasPlaylist && (
-              <IconButton label="Nästa låt" onClick={next}>
+              <IconButton label="Next track" onClick={next}>
                 <FaForwardStep />
               </IconButton>
             )}
@@ -208,7 +208,7 @@ export default function MusicPlayer({ tracks, artworkSize = ARTWORK_SIZE, initia
 
         {/* Volym – dold på mobil, där telefonens egna knappar används (iOS ignorerar ändå volym från webben). */}
         <div className="hidden items-center gap-2 self-end text-white/60 sm:flex">
-          <IconButton label={muted ? "Slå på ljud" : "Stäng av ljud"} onClick={() => setMuted((m) => !m)}>
+          <IconButton label={muted ? "Unmute" : "Mute"} onClick={() => setMuted((m) => !m)}>
             <VolumeIcon />
           </IconButton>
           <input
@@ -221,7 +221,7 @@ export default function MusicPlayer({ tracks, artworkSize = ARTWORK_SIZE, initia
               setVolume(Number(e.target.value));
               setMuted(false);
             }}
-            aria-label="Volym"
+            aria-label="Volume"
             className="h-1 w-24 cursor-pointer accent-white"
           />
         </div>
@@ -233,11 +233,11 @@ export default function MusicPlayer({ tracks, artworkSize = ARTWORK_SIZE, initia
           progress={progress}
           duration={duration}
           onSeek={seek}
-          label={`Spola i ${track.title}`}
+          label={`Seek in ${track.title}`}
         />
         <div className="mt-1.5 flex justify-between text-xs tabular-nums text-white/50">
           <span>{formatTime(time)}</span>
-          {error ? <span className="text-red-300">Kunde inte spela låten</span> : <span>{formatTime(duration)}</span>}
+          {error ? <span className="text-red-300">Could not play the track</span> : <span>{formatTime(duration)}</span>}
         </div>
       </div>
 

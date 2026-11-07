@@ -29,17 +29,18 @@ const links = [
 
 export default function SocialLinks() {
   return (
-    <nav aria-label="Sociala medier">
-      <ul className="flex items-center justify-center gap-6">
+    <nav aria-label="Social media">
+      {/* Mobile: wraps into two rows of five. From sm and up: one row. */}
+      <ul className="mx-auto flex max-w-[16rem] flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:max-w-none sm:flex-nowrap sm:gap-4">
         {links.map(({ name, href, Icon }) => (
           <li key={name}>
             <a
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Fexell på ${name}`}
+              aria-label={`Fexell on ${name}`}
               title={name}
-              className="block text-white/50 transition hover:text-white hover:scale-110"
+              className="block p-1.5 text-white/50 transition hover:text-white hover:scale-110"
             >
               <Icon size={26} aria-hidden="true" />
             </a>
