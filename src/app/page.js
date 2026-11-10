@@ -11,7 +11,7 @@ export default function Home() {
         <div className="absolute -top-[25vmax] -left-[25vmax] h-[55vmax] w-[55vmax] rounded-full bg-[radial-gradient(circle,#1d4e6b_0%,transparent_70%)] opacity-40 blur-3xl" />
       </div>
       <div className="top flex flex-1 flex-col w-full items-center justify-end pb-8">
-        <img src="/logo/Fexell - Logo White.svg" alt="Fexell Logo" className="w-[85%] max-w-[43rem] h-auto" />
+        <img src="/logo/fexell-vit.svg" alt="Fexell Logo" className="w-[85%] max-w-[43rem] h-auto" />
         <p className="mt-6 px-4 text-center text-sm sm:text-base uppercase tracking-[0.3em] text-white/70">
           Driving electronic music straight from the studio.
         </p>
